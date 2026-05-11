@@ -25,13 +25,7 @@
         .letter-wrapper {
             width: 100%;
             max-width: 700px;
-            background: repeating-linear-gradient(
-                45deg,
-                #f4a7b9 0px,
-                #f4a7b9 22px,
-                #c9a7e0 22px,
-                #c9a7e0 44px
-            );
+            background: #c9a7e0;
             padding: 22px;
             box-shadow: 0 8px 40px rgba(160, 80, 180, 0.28);
         }
@@ -217,6 +211,47 @@
             letter-spacing: 1px;
         }
 
+        /* ── Photo placeholders ── */
+        .photo {
+            background: #e8ddf0;
+            border: 3px solid #fff;
+            box-shadow: 2px 3px 10px rgba(0,0,0,0.18);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #b08cc8;
+            font-family: 'Arial', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            flex-shrink: 0;
+        }
+        .photo svg {
+            opacity: 0.45;
+            margin-bottom: 5px;
+        }
+        .photo-1 {
+            width: 110px;
+            height: 95px;
+            transform: rotate(-4deg);
+            float: right;
+            margin: 0 0 12px 14px;
+        }
+        .photo-2 {
+            width: 100px;
+            height: 88px;
+            transform: rotate(3deg);
+            float: left;
+            margin: 4px 14px 8px 0;
+        }
+        .photo-3 {
+            width: 105px;
+            height: 90px;
+            transform: rotate(-2deg);
+            float: right;
+            margin: 6px 0 6px 14px;
+        }
+
         /* ── Responsive ── */
         @media (max-width: 580px) {
             .letter-inner { padding: 24px 20px 28px; }
@@ -258,6 +293,10 @@
             <!-- Body + right stamps -->
             <div class="letter-body">
                 <div class="letter-text">
+                    <div class="photo photo-1">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b08cc8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        PHOTO
+                    </div>
                     <p>For all the times that I forgot to thank you,</p>
                     <p>for all the special, little things you do.</p>
                     <p>For all the words that sometimes go</p>
@@ -269,10 +308,18 @@
                     <p>the meaning of compassion,</p>
                     <p>and sharing in my</p>
                     <p>triumphs and my tears.</p>
+                    <div class="photo photo-3">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b08cc8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        PHOTO
+                    </div>
                     <p>And, if at times, I may have seemed</p>
                     <p>ungrateful, I want to say, I truly hope you see,</p>
                     <p>that nothing you have done has been forgotten,</p>
                     <p>and day by day you mean more to me.</p>
+                    <div class="photo photo-2">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b08cc8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        PHOTO
+                    </div>
                 </div>
 
                 <div class="right-stamps">
@@ -296,7 +343,7 @@
                 </div>
 
                 <div class="signature">
-                    <span class="s-heart">♥</span> Love, Jordan
+                    <span class="s-heart">♥</span> Love, Jayda
                 </div>
 
                 <div class="stamp stamp-postmark">
