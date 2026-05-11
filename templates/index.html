@@ -22,12 +22,146 @@
             font-family: 'Dancing Script', cursive;
         }
 
+        /* ── Keypad screen ── */
+        #keypad-screen {
+            position: fixed;
+            inset: 0;
+            background: #f0e8f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .keypad-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .keypad-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 38px;
+            font-weight: 600;
+            color: #b08cc8;
+            letter-spacing: 1px;
+        }
+
+        #display-bar {
+            display: flex;
+            gap: 20px;
+            background: #fff;
+            border: 2px solid #c9a7e0;
+            border-radius: 50px;
+            padding: 16px 36px;
+            box-shadow: 0 4px 20px rgba(160, 80, 180, 0.15);
+        }
+
+        .dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #b08cc8;
+            background: transparent;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .dot.filled {
+            background: #b08cc8;
+            transform: scale(1.1);
+        }
+
+        .keypad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .keypad-grid button {
+            width: 82px;
+            height: 82px;
+            border: 2px solid #c9a7e0;
+            border-radius: 18px;
+            background: #fff;
+            font-family: 'Dancing Script', cursive;
+            font-size: 34px;
+            color: #7a5c8a;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s, transform 0.1s;
+            box-shadow: 0 3px 12px rgba(160, 80, 180, 0.13);
+            user-select: none;
+        }
+
+        .keypad-grid button:hover {
+            background: #c9a7e0;
+            color: #fff;
+        }
+
+        .keypad-grid button:active {
+            transform: scale(0.92);
+        }
+
+        .btn-action {
+            font-size: 26px !important;
+            color: #b08cc8 !important;
+        }
+
+        .btn-action:hover {
+            color: #fff !important;
+        }
+
+        .btn-enter {
+            color: #e87ea1 !important;
+        }
+
+        .btn-enter:hover {
+            color: #fff !important;
+            background: #e87ea1 !important;
+            border-color: #e87ea1 !important;
+        }
+
+        /* ── Animations ── */
+        @keyframes fadeOut {
+            to { opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60%  { transform: translateX(-10px); }
+            40%, 80%  { transform: translateX(10px); }
+        }
+
+        #keypad-screen.fade-out {
+            animation: fadeOut 0.6s forwards;
+            pointer-events: none;
+        }
+
+        #letter-screen.fade-in {
+            animation: fadeIn 0.9s forwards;
+        }
+
+        #display-bar.shake {
+            animation: shake 0.5s;
+        }
+
+        /* ── Letter screen ── */
+        #letter-screen {
+            width: 100%;
+        }
+
         .letter-wrapper {
             width: 100%;
             max-width: 700px;
             background: #c9a7e0;
             padding: 22px;
             box-shadow: 0 8px 40px rgba(160, 80, 180, 0.28);
+            margin: 0 auto;
         }
 
         .letter-inner {
@@ -266,94 +400,186 @@
             .right-stamps { min-width: 76px; gap: 18px; }
             .stamp-par-avion { width: 70px; height: 70px; }
             .signature { font-size: 30px; }
+
+            .keypad-grid button { width: 68px; height: 68px; font-size: 28px; }
+            .btn-action { font-size: 22px !important; }
+            .keypad-title { font-size: 30px; }
         }
     </style>
 </head>
 <body>
-    <div class="letter-wrapper">
-        <div class="letter-inner">
 
-            <!-- Top row -->
-            <div class="top-row">
-                <div class="stamp stamp-air-mail">
-                    <span class="s-heart">❤</span>
-                    LOVE<br>AIR MAIL
-                </div>
+    <!-- Keypad lock screen -->
+    <div id="keypad-screen">
+        <div class="keypad-container">
+            <h2 class="keypad-title">Enter Code</h2>
 
-                <div class="hearts-center">❤ ❤</div>
-
-                <div class="top-right">
-                    <div class="stamp stamp-via">
-                        ✈ VIA AEREA
-                    </div>
-                    <div class="stamp-circle">
-                        <span class="s-heart">❤</span>
-                        LOVE<br>MAIL
-                    </div>
-                </div>
+            <div id="display-bar">
+                <div class="dot" id="dot-0"></div>
+                <div class="dot" id="dot-1"></div>
+                <div class="dot" id="dot-2"></div>
+                <div class="dot" id="dot-3"></div>
             </div>
 
-            <!-- Heading -->
-            <h1 class="letter-heading">To my Mom,</h1>
-
-            <!-- Body + right stamps -->
-            <div class="letter-body">
-                <div class="letter-text">
-                    <div class="photo photo-1">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b08cc8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                        PHOTO
-                    </div>
-                    <p>For all the times that I forgot to thank you,</p>
-                    <p>for all the special, little things you do.</p>
-                    <p>For all the words that sometimes go</p>
-                    <p>unspoken, I need to say,</p>
-                    <p>I love you, Mom...I do.</p>
-                    <p>I love you for the way you stop and listen,</p>
-                    <p>and for your kind support throughout</p>
-                    <p>the years, for teaching me</p>
-                    <p>the meaning of compassion,</p>
-                    <p>and sharing in my</p>
-                    <p>triumphs and my tears.</p>
-                    <div class="photo photo-3">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b08cc8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                        PHOTO
-                    </div>
-                    <p>And, if at times, I may have seemed</p>
-                    <p>ungrateful, I want to say, I truly hope you see,</p>
-                    <p>that nothing you have done has been forgotten,</p>
-                    <p>and day by day you mean more to me.</p>
-                    <div class="photo photo-2">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b08cc8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                        PHOTO
-                    </div>
-                </div>
-
-                <div class="right-stamps">
-                    <div class="stamp-par-avion">
-                        By Air Mail
-                        <span class="plane">✈</span>
-                        Par Avion
-                    </div>
-                </div>
+            <div class="keypad-grid">
+                <button onclick="pressDigit('1')">1</button>
+                <button onclick="pressDigit('2')">2</button>
+                <button onclick="pressDigit('3')">3</button>
+                <button onclick="pressDigit('4')">4</button>
+                <button onclick="pressDigit('5')">5</button>
+                <button onclick="pressDigit('6')">6</button>
+                <button onclick="pressDigit('7')">7</button>
+                <button onclick="pressDigit('8')">8</button>
+                <button onclick="pressDigit('9')">9</button>
+                <button class="btn-action" onclick="pressBackspace()">&#8592;</button>
+                <button onclick="pressDigit('0')">0</button>
+                <button class="btn-action btn-enter">&#10003;</button>
             </div>
-
-            <!-- Bottom row -->
-            <div class="bottom-row">
-                <div class="stamp stamp-delivered">
-                    🇺🇸 U.S. POSTAGE<br>
-                    <span class="s-star">★</span> DELIVERED <span class="s-star">★</span>
-                </div>
-
-                <div class="signature">
-                    <span class="s-heart">♥</span> Love, Jayda
-                </div>
-
-                <div class="stamp stamp-postmark">
-                    09 07 00 47
-                </div>
-            </div>
-
         </div>
     </div>
+
+    <!-- Letter (hidden until correct code entered) -->
+    <div id="letter-screen" style="display:none;">
+        <div class="letter-wrapper">
+            <div class="letter-inner">
+
+                <!-- Top row -->
+                <div class="top-row">
+                    <div class="stamp stamp-air-mail">
+                        <span class="s-heart">❤</span>
+                        LOVE<br>AIR MAIL
+                    </div>
+
+                    <div class="hearts-center">❤ ❤</div>
+
+                    <div class="top-right">
+                        <div class="stamp stamp-via">
+                            ✈ VIA AEREA
+                        </div>
+                        <div class="stamp-circle">
+                            <span class="s-heart">❤</span>
+                            LOVE<br>MAIL
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Heading -->
+                <h1 class="letter-heading">To my Mom,</h1>
+
+                <!-- Body + right stamps -->
+                <div class="letter-body">
+                    <div class="letter-text">
+                        <div class="photo photo-1">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b08cc8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            PHOTO
+                        </div>
+                        <p>For all the times that I forgot to thank you,</p>
+                        <p>for all the special, little things you do.</p>
+                        <p>For all the words that sometimes go</p>
+                        <p>unspoken, I need to say,</p>
+                        <p>I love you, Mom...I do.</p>
+                        <p>I love you for the way you stop and listen,</p>
+                        <p>and for your kind support throughout</p>
+                        <p>the years, for teaching me</p>
+                        <p>the meaning of compassion,</p>
+                        <p>and sharing in my</p>
+                        <p>triumphs and my tears.</p>
+                        <div class="photo photo-3">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b08cc8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            PHOTO
+                        </div>
+                        <p>And, if at times, I may have seemed</p>
+                        <p>ungrateful, I want to say, I truly hope you see,</p>
+                        <p>that nothing you have done has been forgotten,</p>
+                        <p>and day by day you mean more to me.</p>
+                        <div class="photo photo-2">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b08cc8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                            PHOTO
+                        </div>
+                    </div>
+
+                    <div class="right-stamps">
+                        <div class="stamp-par-avion">
+                            By Air Mail
+                            <span class="plane">✈</span>
+                            Par Avion
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom row -->
+                <div class="bottom-row">
+                    <div class="stamp stamp-delivered">
+                        🇺🇸 U.S. POSTAGE<br>
+                        <span class="s-star">★</span> DELIVERED <span class="s-star">★</span>
+                    </div>
+
+                    <div class="signature">
+                        <span class="s-heart">♥</span> Love, Jayda
+                    </div>
+
+                    <div class="stamp stamp-postmark">
+                        09 07 00 47
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CODE = "5782";
+        let entered = "";
+
+        function pressDigit(d) {
+            if (entered.length >= 4) return;
+            entered += d;
+            updateDisplay();
+            if (entered.length === 4) {
+                setTimeout(checkCode, 250);
+            }
+        }
+
+        function pressBackspace() {
+            entered = entered.slice(0, -1);
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            document.querySelectorAll('.dot').forEach(function(dot, i) {
+                dot.classList.toggle('filled', i < entered.length);
+            });
+        }
+
+        function checkCode() {
+            if (entered === CODE) {
+                var ks = document.getElementById('keypad-screen');
+                var ls = document.getElementById('letter-screen');
+                ks.classList.add('fade-out');
+                setTimeout(function() {
+                    ks.style.display = 'none';
+                    ls.style.display = 'block';
+                    ls.classList.add('fade-in');
+                }, 600);
+            } else {
+                var db = document.getElementById('display-bar');
+                db.classList.add('shake');
+                setTimeout(function() {
+                    db.classList.remove('shake');
+                    entered = "";
+                    updateDisplay();
+                }, 600);
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key >= '0' && e.key <= '9') {
+                pressDigit(e.key);
+            } else if (e.key === 'Backspace') {
+                pressBackspace();
+            }
+        });
+    </script>
+
 </body>
 </html>
