@@ -393,17 +393,121 @@
         }
 
         /* ── Responsive ── */
-        @media (max-width: 580px) {
-            .letter-inner { padding: 24px 20px 28px; }
-            .letter-heading { font-size: 40px; }
-            .letter-text p { font-size: 17px; }
-            .right-stamps { min-width: 76px; gap: 18px; }
-            .stamp-par-avion { width: 70px; height: 70px; }
-            .signature { font-size: 30px; }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+                align-items: flex-start;
+            }
 
-            .keypad-grid button { width: 68px; height: 68px; font-size: 28px; }
-            .btn-action { font-size: 22px !important; }
-            .keypad-title { font-size: 30px; }
+            .letter-wrapper {
+                padding: 12px;
+            }
+
+            .letter-inner {
+                padding: 20px 16px 24px;
+            }
+
+            .letter-heading {
+                font-size: 38px;
+                margin-bottom: 14px;
+            }
+
+            .letter-text p {
+                font-size: 17px;
+                line-height: 1.65;
+            }
+
+            /* Hide side stamp column — frees up the full width for text */
+            .right-stamps {
+                display: none;
+            }
+
+            .photo-1, .photo-2, .photo-3 {
+                width: 82px;
+                height: 72px;
+            }
+
+            .hearts-center {
+                font-size: 18px;
+            }
+
+            .signature {
+                font-size: 30px;
+            }
+
+            .bottom-row {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            /* Keypad */
+            .keypad-container {
+                gap: 22px;
+            }
+
+            .keypad-title {
+                font-size: 30px;
+            }
+
+            #display-bar {
+                padding: 12px 24px;
+                gap: 16px;
+            }
+
+            .keypad-grid {
+                gap: 10px;
+            }
+
+            .keypad-grid button {
+                width: 72px;
+                height: 72px;
+                font-size: 30px;
+            }
+
+            .btn-action {
+                font-size: 22px !important;
+            }
+        }
+
+        @media (max-width: 400px) {
+            body {
+                padding: 6px;
+            }
+
+            .letter-wrapper {
+                padding: 8px;
+            }
+
+            .letter-inner {
+                padding: 16px 12px 20px;
+            }
+
+            .letter-heading {
+                font-size: 30px;
+            }
+
+            .letter-text p {
+                font-size: 16px;
+            }
+
+            .photo-1, .photo-2, .photo-3 {
+                width: 68px;
+                height: 58px;
+            }
+
+            .signature {
+                font-size: 26px;
+            }
+
+            .keypad-grid button {
+                width: 62px;
+                height: 62px;
+                font-size: 26px;
+            }
+
+            .btn-action {
+                font-size: 20px !important;
+            }
         }
     </style>
 </head>
