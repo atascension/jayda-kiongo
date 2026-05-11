@@ -351,24 +351,18 @@
             -webkit-text-stroke: 1.5px #b08cc8;
         }
 
-        /* ── Photo placeholders ── */
+        /* ── Photos ── */
         .photo {
-            background: #e8ddf0;
             border: 3px solid #fff;
             box-shadow: 2px 3px 10px rgba(0,0,0,0.18);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #b08cc8;
-            font-family: 'Arial', sans-serif;
-            font-size: 11px;
-            letter-spacing: 0.5px;
+            overflow: hidden;
             flex-shrink: 0;
         }
-        .photo svg {
-            opacity: 0.45;
-            margin-bottom: 5px;
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
         .photo-1 {
             width: 110px;
@@ -574,8 +568,7 @@
                 <div class="letter-body">
                     <div class="letter-text">
                         <div class="photo photo-1">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b08cc8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                            PHOTO
+                            <img src="/img/IMG_1643.jpg" alt="Family photo">
                         </div>
                         <p>For all the times that I forgot to thank you,</p>
                         <p>for all the special, little things you do.</p>
@@ -589,16 +582,14 @@
                         <p>and sharing in my</p>
                         <p>triumphs and my tears.</p>
                         <div class="photo photo-3">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b08cc8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                            PHOTO
+                            <img src="/img/FullSizeRender.jpg" alt="Family photo">
                         </div>
                         <p>And, if at times, I may have seemed</p>
                         <p>ungrateful, I want to say, I truly hope you see,</p>
                         <p>that nothing you have done has been forgotten,</p>
                         <p>and day by day you mean more to me.</p>
                         <div class="photo photo-2">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#b08cc8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-                            PHOTO
+                            <img src="/img/1000007462.JPEG" alt="Family photo">
                         </div>
                     </div>
 
