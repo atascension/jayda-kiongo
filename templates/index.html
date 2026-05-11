@@ -3,9 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>To my Mom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f0e8f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .letter-wrapper {
+            width: 100%;
+            max-width: 700px;
+            background: repeating-linear-gradient(
+                45deg,
+                #f4a7b9 0px,
+                #f4a7b9 22px,
+                #c9a7e0 22px,
+                #c9a7e0 44px
+            );
+            padding: 22px;
+            box-shadow: 0 8px 40px rgba(160, 80, 180, 0.28);
+        }
+
+        .letter-inner {
+            background-color: #fdf6ec;
+            padding: 36px 42px 40px;
+            position: relative;
+        }
+
+        /* ── Top row ── */
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .hearts-center {
+            color: #e87ea1;
+            font-size: 24px;
+            padding-top: 8px;
+            letter-spacing: 6px;
+        }
+
+        /* ── Stamps shared ── */
+        .stamp {
+            border: 2px solid #b08cc8;
+            color: #b08cc8;
+            font-size: 10px;
+            letter-spacing: 0.6px;
+            text-align: center;
+            line-height: 1.5;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Top-left */
+        .stamp-air-mail {
+            width: 88px;
+            padding: 6px 8px;
+            transform: rotate(-6deg);
+        }
+        .stamp-air-mail .s-heart {
+            display: block;
+            color: #e87ea1;
+            font-size: 17px;
+            margin-bottom: 2px;
+        }
+
+        /* Top-right cluster */
+        .top-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .stamp-via {
+            padding: 4px 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        .stamp-circle {
+            width: 68px;
+            height: 68px;
+            border: 2px solid #b08cc8;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #b08cc8;
+            font-family: 'Arial', sans-serif;
+            font-size: 10px;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .stamp-circle .s-heart {
+            color: #e87ea1;
+            font-size: 15px;
+        }
+
+        /* ── Letter heading ── */
+        .letter-heading {
+            font-size: 60px;
+            font-weight: 700;
+            color: #2c2c2c;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        /* ── Body: text + right stamps side by side ── */
+        .letter-body {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .letter-text {
+            flex: 1;
+        }
+        .letter-text p {
+            font-size: 21px;
+            color: #2c2c2c;
+            line-height: 1.72;
+        }
+
+        /* Right-side stamps column */
+        .right-stamps {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+            min-width: 105px;
+            padding-top: 30px;
+        }
+
+        .stamp-love-mail {
+            width: 100px;
+            padding: 8px 10px;
+            transform: rotate(4deg);
+        }
+        .stamp-love-mail .s-heart {
+            display: block;
+            color: #e87ea1;
+            font-size: 18px;
+            margin-bottom: 3px;
+        }
+
+        .stamp-par-avion {
+            width: 92px;
+            height: 92px;
+            border: 2px solid #b08cc8;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #b08cc8;
+            font-family: 'Arial', sans-serif;
+            font-size: 10px;
+            text-align: center;
+            line-height: 1.5;
+            transform: rotate(-10deg);
+        }
+        .stamp-par-avion .plane {
+            font-size: 22px;
+            margin: 2px 0;
+        }
+
+        /* ── Bottom row ── */
+        .bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 28px;
+        }
+
+        .stamp-delivered {
+            width: 108px;
+            padding: 7px 10px;
+            transform: rotate(-3deg);
+        }
+        .stamp-delivered .s-star {
+            color: #e87ea1;
+        }
+
+        .signature {
+            font-size: 42px;
+            font-weight: 700;
+            color: #2c2c2c;
+        }
+        .signature .s-heart {
+            color: #e87ea1;
+            font-size: 28px;
+        }
+
+        .stamp-postmark {
+            padding: 5px 9px;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 580px) {
+            .letter-inner { padding: 24px 20px 28px; }
+            .letter-heading { font-size: 40px; }
+            .letter-text p { font-size: 17px; }
+            .right-stamps { min-width: 76px; gap: 18px; }
+            .stamp-par-avion { width: 70px; height: 70px; }
+            .signature { font-size: 30px; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World! This is the HTML</h1>
+    <div class="letter-wrapper">
+        <div class="letter-inner">
+
+            <!-- Top row -->
+            <div class="top-row">
+                <div class="stamp stamp-air-mail">
+                    <span class="s-heart">❤</span>
+                    LOVE<br>AIR MAIL
+                </div>
+
+                <div class="hearts-center">❤ ❤</div>
+
+                <div class="top-right">
+                    <div class="stamp stamp-via">
+                        ✈ VIA AEREA
+                    </div>
+                    <div class="stamp-circle">
+                        <span class="s-heart">❤</span>
+                        LOVE<br>MAIL
+                    </div>
+                </div>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="letter-heading">To my Mom,</h1>
+
+            <!-- Body + right stamps -->
+            <div class="letter-body">
+                <div class="letter-text">
+                    <p>For all the times that I forgot to thank you,</p>
+                    <p>for all the special, little things you do.</p>
+                    <p>For all the words that sometimes go</p>
+                    <p>unspoken, I need to say,</p>
+                    <p>I love you, Mom...I do.</p>
+                    <p>I love you for the way you stop and listen,</p>
+                    <p>and for your kind support throughout</p>
+                    <p>the years, for teaching me</p>
+                    <p>the meaning of compassion,</p>
+                    <p>and sharing in my</p>
+                    <p>triumphs and my tears.</p>
+                    <p>And, if at times, I may have seemed</p>
+                    <p>ungrateful, I want to say, I truly hope you see,</p>
+                    <p>that nothing you have done has been forgotten,</p>
+                    <p>and day by day you mean more to me.</p>
+                </div>
+
+                <div class="right-stamps">
+                    <div class="stamp stamp-love-mail">
+                        <span class="s-heart">❤</span>
+                        LOVE<br>MAiL
+                    </div>
+                    <div class="stamp-par-avion">
+                        By Air Mail
+                        <span class="plane">✈</span>
+                        Par Avion
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom row -->
+            <div class="bottom-row">
+                <div class="stamp stamp-delivered">
+                    🇺🇸 U.S. POSTAGE<br>
+                    <span class="s-star">★</span> DELIVERED <span class="s-star">★</span>
+                </div>
+
+                <div class="signature">
+                    <span class="s-heart">♥</span> Love, Jordan
+                </div>
+
+                <div class="stamp stamp-postmark">
+                    09 07 00 47
+                </div>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>
