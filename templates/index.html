@@ -628,6 +628,7 @@
         </div>
     </div>
 
+    <script src="./assets/vendor/canvas-confetti/dist/confetti.browser.js"></script>
     <script>
         const CODE = "0516";
         let entered = "";
@@ -652,6 +653,34 @@
             });
         }
 
+        function runLetterConfetti() {
+            if (typeof confetti !== 'function') return;
+            var palette = ['#b08cc8', '#c9a7e0', '#ffffff', '#e8d4f5', '#ffd700', '#ff69b4'];
+            var end = Date.now() + 3200;
+            var tick = 0;
+            function burst() {
+                if (tick++ % 2 === 0) {
+                    confetti({
+                        particleCount: 3,
+                        angle: 270,
+                        spread: 160,
+                        startVelocity: 22,
+                        gravity: 0.95,
+                        drift: (Math.random() - 0.5) * 0.6,
+                        ticks: 380,
+                        origin: { x: Math.random(), y: 0 },
+                        colors: palette,
+                        zIndex: 150,
+                        disableForReducedMotion: true
+                    });
+                }
+                if (Date.now() < end) {
+                    requestAnimationFrame(burst);
+                }
+            }
+            burst();
+        }
+
         function checkCode() {
             if (entered === CODE) {
                 var ks = document.getElementById('keypad-screen');
@@ -661,6 +690,7 @@
                     ks.style.display = 'none';
                     ls.style.display = 'block';
                     ls.classList.add('fade-in');
+                    runLetterConfetti();
                 }, 600);
             } else {
                 var db = document.getElementById('display-bar');
